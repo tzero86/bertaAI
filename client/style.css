@@ -1,13 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
 
+.no-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
 :root {
-  --background: #404258;
+  --background: #4a4d60;
   --avatar: #6e8af5;
   --avatar2: #8679dd;
   --prompt: #32364c;
-  --prompt-text: #9fa7c6;
+  --prompt-text: #c0c6de;
   --messages: #62647b00;
-  --message-text: #9fa7c6;
+  --message-text: #cad0ea;
 }
 
 
@@ -98,7 +106,6 @@ code {
 
 .chat {
   width: 100%;
-  max-width: 1280px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -157,8 +164,7 @@ code {
 }
 
 form {
-  width: 95%;
-  max-width: 1280px;
+  width: 90%;
   margin: 60px;
   padding: 10px;
   background: var(--prompt);

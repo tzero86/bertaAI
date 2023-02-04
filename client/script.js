@@ -110,7 +110,7 @@ function chatStripe (isAi, value, uniqueId) {
             alt="${isAi ? 'bot' : 'user'}"
           />
         </div>
-        <pre class="language-markup"><code class="message" id="${uniqueId}">${value}</code></pre>
+        <pre class="language-markup"><code class="message no-scroll" id="${uniqueId}">${value}</code></pre>
       </div>
     </div>
     ` 
