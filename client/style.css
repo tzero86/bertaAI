@@ -28,7 +28,13 @@ body {
 
 .tagline {
   color: #e3e4e7;
-  font-size: medium;
+  font-size: small;
+}
+
+.socials img {
+  padding-top: 5px;
+  height: 20px;
+  width: 20px;
 }
 
 #message {
@@ -169,7 +175,8 @@ button {
 }
 
 form img {
+  padding-top: 10px;
+  padding-right: 5px;
   width: 30px;
   height: 30px;
-  object-fit: contain;
 }
