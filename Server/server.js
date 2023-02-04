@@ -3,7 +3,9 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import { Configuration, OpenAIApi } from 'openai';
 
+
 dotenv.config();
+const Prism = require('prismjs');
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -29,7 +31,7 @@ app.post('/', async (req, res) => {
             temperature: 0,
             max_tokens: 6000,
             top_p: 1,
-            frequency_penalty: 0.5,
+            frequency_penalty: 0.7,
             presence_penalty: 0,
         });
         res.status(200).send({
