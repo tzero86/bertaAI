@@ -49,23 +49,36 @@ function loader(element){
   element.textContent = '';
   loadInterval = setInterval(()=> {
     element.textContent += '.';
-    if (element.textContent === '...'){
+    if (element.textContent === '......'){
       element.textContent = '';
     }
   }, 300)
 }
 
 function typeText(element, text) {
+  let words = text.split(" ");
   let index = 0;
-  let interval = setInterval(()=> {
-    if(index < text.length) {
-      element.innerHTML += text.charAt(index);
-      index++;
+  let wordIndex = 0;
+  let interval = setInterval(() => {
+    if (index < text.length) {
+      let tempElement = document.createElement("span");
+      tempElement.style.visibility = "hidden";
+      tempElement.style.whiteSpace = "nowrap";
+      tempElement.innerHTML = element.innerHTML + words[wordIndex] + " ";
+      document.body.appendChild(tempElement);
+      if (tempElement.offsetWidth > 0.5 * window.innerWidth) {
+        element.innerHTML += "<br>";
+      }
+      element.innerHTML += words[wordIndex] + " ";
+      index += words[wordIndex].length + 1;
+      wordIndex++;
+      document.body.removeChild(tempElement);
     } else {
       clearInterval(interval);
     }
   }, 20);
 }
+
 
 function generateRandomString(stringLength) {
   let str = '';
@@ -89,7 +102,7 @@ function generateUniqueId() {
 function chatStripe (isAi, value, uniqueId) {
   return (
     `
-    <div class="wrapper" ${isAi && 'ai'}">
+    <div class="wrapper ${isAi && 'ai'}">
       <div class="chat">
         <div class="profile">
           <img 
@@ -97,7 +110,7 @@ function chatStripe (isAi, value, uniqueId) {
             alt="${isAi ? 'bot' : 'user'}"
           />
         </div>
-        <pre class="language-python"><code class="message" id="${uniqueId}">${value}</code></pre>
+        <pre class="language-markup"><code class="message" id="${uniqueId}">${value}</code></pre>
       </div>
     </div>
     ` 
@@ -113,7 +126,6 @@ const handleSubmit = async (e) => {
   let UniqueId = generateUniqueId();
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'), 'user');
   form.reset();
-  Prism.highlightAll();
 
   // AI chatstripe
   let uniqueId = generateUniqueId();
